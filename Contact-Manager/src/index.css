@@ -10,6 +10,7 @@
   font-display: swap;
 }
 
-* {
+html {
   font-family: "Vazir";
+  height: 200vh;
 }
