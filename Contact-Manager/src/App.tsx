@@ -1,8 +1,6 @@
 import { useState } from "react";
-import AddContactButton from "./Components/AddContactButton";
-import ContactCard, { Contact } from "./Components/ContactCard";
-import Navbar from "./Components/Navbar";
-import CardContainer from "./Components/CardContainer";
+import { AddContactButton, CardContainer, Navbar, ContactCard } from "./index";
+import { Contact } from "./Components/ContactCard";
 
 const App = () => {
   const [contacts, setContacts] = useState<Contact[]>([
