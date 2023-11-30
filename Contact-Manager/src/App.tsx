@@ -28,10 +28,11 @@ const App = () => {
         {contacts.length > 0 ? (
           contacts.map((contact) => (
             <ContactCard
+              contacts={contact}
+              deleteContact={(id) =>
+                setContacts(contacts.filter((contact) => contact.id !== id))
+              }
               key={contact.id}
-              emailAddress={contact.emailAddress}
-              fullname={contact.fullname}
-              phoneNumber={contact.phoneNumber}
             />
           ))
         ) : (
