@@ -1,6 +1,13 @@
 import { BsEye, BsPen, BsTrash } from "react-icons/bs";
 
-const ContactCard = () => {
+export interface Contact {
+  id?: number;
+  fullname: string;
+  phoneNumber: number;
+  emailAddress: string;
+}
+
+const ContactCard = ({ emailAddress, fullname, phoneNumber }: Contact) => {
   return (
     <div className="card_container ">
       <img
@@ -9,9 +16,9 @@ const ContactCard = () => {
         alt="contact picture"
       />
       <ul className="contact_info">
-        <li>Fullname : Daniel yadghar</li>
-        <li>Phone number : +980000000000</li>
-        <li>Email Address : Daniel072.dy@gmail.com</li>
+        <li>Fullname : {fullname}</li>
+        <li>Phone number : {phoneNumber}</li>
+        <li>Email Address : {emailAddress}</li>
       </ul>
       <div className="action_buttons">
         <button className=" contact_detail_button">

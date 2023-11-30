@@ -1,9 +1,9 @@
 :root {
-  --text-color: #dde6ed;
+  --text-color: #ffffff;
   --background-color: #27374d;
   --border-color: #526d82;
   --add-contact-color: rgb(255, 184, 52);
-  --card-background: rgb(48, 48, 65);
+  --card-background: rgb(100, 119, 132);
   --show-button: rgb(83, 30, 0);
   --edit-button: rgb(27, 3, 94);
   --remove-button: rgb(100, 0, 0);
@@ -93,6 +93,8 @@ html {
 }
 .add_contact:active {
   background-color: rgba(160, 90, 5, 0.808);
+  border-color: rgba(160, 90, 5, 0.808);
+  color: wheat;
 }
 
 .add_contact:active,
@@ -116,11 +118,11 @@ li {
 }
 .card_container {
   display: flex;
-  max-width: 45%;
   border-radius: 20px;
   align-items: center;
   justify-content: space-around;
   padding: 15px;
+  margin: 1rem;
 }
 
 .contact_picture,
@@ -187,4 +189,11 @@ li {
 .contact_remove_button,
 .contact_detail_button {
   padding: 12px;
+}
+
+/* CardContainer Component */
+
+.card_container_section {
+  display: grid;
+  grid-template-columns: 50vw 50vw;
 }
