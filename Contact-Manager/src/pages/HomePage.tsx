@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { AddContactButton, CardContainer, Navbar, ContactCard } from "./index";
-import { Contact } from "./Components/ContactCard";
+import ContactCard, { Contact } from "../Components/ContactCard";
+import { Navbar, AddContactButton, CardContainer } from "..";
 
-const App = () => {
+const HomePage = () => {
   const [contacts, setContacts] = useState<Contact[]>([
     {
       id: 1,
@@ -41,4 +41,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default HomePage;
