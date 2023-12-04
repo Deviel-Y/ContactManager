@@ -92,18 +92,17 @@ html {
   border: 1px solid rgba(255, 183, 94, 0.808);
 }
 .add_contact:active {
-  background-color: rgba(160, 90, 5, 0.808);
-  border-color: rgba(160, 90, 5, 0.808);
-  color: wheat;
+  background-color: rgba(217, 147, 61, 0.808);
+  border-color: rgba(217, 147, 61, 0.808);
 }
 
+/* for all of the buttons */
 .add_contact:active,
 .contact_edit_button:active,
 .contact_remove_button:active,
 .contact_detail_button:active {
   transform: translateY(5px);
 }
-/* for all of the buttons */
 
 /* ContactCard Component */
 

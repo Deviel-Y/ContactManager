@@ -1,0 +1,38 @@
+{
+  "contacts": [
+    {
+      "fullname": "Daniel Yadghar",
+      "photo": "https://randomuser.me/api/portraits/men/51.jpg",
+      "mobile": "09020000000",
+      "job": "front-end web developer",
+      "group": "1",
+      "id": 1
+    },
+    {
+      "fullname": "John Doe",
+      "photo": "https://randomuser.me/api/portraits/men/75.jpg",
+      "mobile": "09120000000",
+      "job": "back-end web developer",
+      "group": "2",
+      "id": 2
+    }
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "name": "Friend"
+    },
+    {
+      "id": 2,
+      "name": "Colleague"
+    },
+    {
+      "id": 3,
+      "name": "Family"
+    },
+    {
+      "id": 3,
+      "name": "Relaive"
+    }
+  ]
+}
