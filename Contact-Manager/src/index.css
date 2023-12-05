@@ -84,16 +84,12 @@ html {
   margin: 20px;
   border-radius: 20px;
   padding: 10px 15px;
-  transition: all 0.25s;
+  transition: all 0.15s;
 }
 
 .add_contact:hover {
-  background-color: rgba(255, 183, 94, 0.808);
-  border: 1px solid rgba(255, 183, 94, 0.808);
-}
-.add_contact:active {
-  background-color: rgba(217, 147, 61, 0.808);
-  border-color: rgba(217, 147, 61, 0.808);
+  background-color: rgb(235, 153, 1);
+  border: 1px solid rgb(235, 153, 1);
 }
 
 /* for all of the buttons */
@@ -101,7 +97,7 @@ html {
 .contact_edit_button:active,
 .contact_remove_button:active,
 .contact_detail_button:active {
-  transform: translateY(5px);
+  transform: translateY(3px);
 }
 
 /* ContactCard Component */

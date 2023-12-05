@@ -2,6 +2,7 @@
   "contacts": [
     {
       "fullname": "Daniel Yadghar",
+      "email": "daniel072.dy@gmail.com",
       "photo": "https://randomuser.me/api/portraits/men/51.jpg",
       "mobile": "09020000000",
       "job": "front-end web developer",
@@ -10,6 +11,7 @@
     },
     {
       "fullname": "John Doe",
+      "email": "John.Doe@gmail.com",
       "photo": "https://randomuser.me/api/portraits/men/75.jpg",
       "mobile": "09120000000",
       "job": "back-end web developer",
