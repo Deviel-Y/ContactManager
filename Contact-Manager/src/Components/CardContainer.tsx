@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { ContactCard } from "..";
 import Contact from "../Entites/Contact";
 import useContactsStore from "../contactStore";
+import { useLocation } from "react-router-dom";
 
 const CardContainer = () => {
   const contacts = useContactsStore((s) => s.contacts);
@@ -22,11 +23,19 @@ const CardContainer = () => {
     fetchContacts();
   }, [setContacts]);
 
+  const location = useLocation();
+  const searchedItem = location.search.slice(8);
+
   return (
     <section className="card_container_section">
-      {contacts.map((contact) => (
-        <ContactCard key={contact.id} contact={contact} />
-      ))}
+      {contacts
+        .filter((contact) =>
+          contact.fullname.toLowerCase().includes(searchedItem)
+        )
+
+        .map((contact) => (
+          <ContactCard key={contact.id} contact={contact} />
+        ))}
     </section>
   );
 };

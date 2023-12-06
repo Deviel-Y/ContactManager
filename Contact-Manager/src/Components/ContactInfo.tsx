@@ -18,6 +18,8 @@ const ContactInfo = () => {
         <li>Fullname : {contact?.fullname}</li>
         <li>Phone number : {contact?.mobile}</li>
         <li>Email Address : {contact?.email}</li>
+        <li>Job: {contact?.job}</li>
+        {/* <li>Group : {contact?.}</li> */}
       </ul>
     </div>
   );
