@@ -1,33 +1,35 @@
 import { BsEye, BsPen, BsTrash } from "react-icons/bs";
-import ContactData from "../Entites/Contact";
+import useContactsStore from "../contactStore";
+import Contact from "../Entites/Contact";
+import { Link } from "react-router-dom";
 
-interface Props {
-  contacts: ContactData;
-  deleteContact: (id: number) => void;
+interface Prop {
+  contact: Contact;
 }
+const ContactCard = ({ contact }: Prop) => {
+  const deleteContact = useContactsStore((s) => s.deleteContact);
 
-const ContactCard = ({ contacts, deleteContact }: Props) => {
   return (
     <div className="card_container ">
       <img
         className="contact_picture"
-        src={contacts.photo}
+        src={contact.photo}
         alt="contact picture"
       />
       <ul className="contact_info">
-        <li>Fullname : {contacts.fullname}</li>
-        <li>Phone number : {contacts.mobile}</li>
-        <li>Email Address : {contacts.email}</li>
+        <li>Fullname : {contact.fullname}</li>
+        <li>Phone number : {contact.mobile}</li>
+        <li>Email Address : {contact.email}</li>
       </ul>
       <div className="action_buttons">
-        <button className=" contact_detail_button">
+        <Link to={`/contacts/${contact.id}`} className="contact_detail_button">
           <BsEye className="button_icon" fill="orangered" />
-        </button>
+        </Link>
         <button className=" contact_edit_button">
           <BsPen className="button_icon" fill="dodgerblue" />
         </button>
         <button
-          onClick={() => deleteContact(contacts.id)}
+          onClick={() => deleteContact(contact.id)}
           className="contact_remove_button"
         >
           <BsTrash className="button_icon" fill="red" />

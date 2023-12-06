@@ -1,11 +1,12 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { ContactCard } from "..";
 import Contact from "../Entites/Contact";
+import useContactsStore from "../contactStore";
 
 const CardContainer = () => {
-  const [contacts, setContacts] = useState<Contact[]>([]);
-
+  const contacts = useContactsStore((s) => s.contacts);
+  const setContacts = useContactsStore((s) => s.setContacts);
   useEffect(() => {
     const fetchContacts = async () => {
       try {
@@ -19,18 +20,12 @@ const CardContainer = () => {
     };
 
     fetchContacts();
-  }, []);
+  }, [setContacts]);
 
   return (
     <section className="card_container_section">
       {contacts.map((contact) => (
-        <ContactCard
-          contacts={contact}
-          deleteContact={(id) =>
-            setContacts(contacts.filter((contact) => contact.id !== id))
-          }
-          key={contact.id}
-        />
+        <ContactCard key={contact.id} contact={contact} />
       ))}
     </section>
   );

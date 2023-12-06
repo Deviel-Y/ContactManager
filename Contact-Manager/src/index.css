@@ -121,7 +121,8 @@ li {
 }
 
 .contact_picture,
-button {
+button,
+.contact_detail_button {
   border-radius: 20px;
   transition: all 0.25s;
 }
