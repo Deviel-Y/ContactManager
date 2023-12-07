@@ -1,14 +1,12 @@
 import { BsEye, BsPen, BsTrash } from "react-icons/bs";
-import useContactsStore from "../contactStore";
-import Contact from "../Entites/Contact";
 import { Link } from "react-router-dom";
+import Contact from "../Entites/Contact";
+import { deleteContact } from "../Services/contactsServices";
 
 interface Prop {
   contact: Contact;
 }
 const ContactCard = ({ contact }: Prop) => {
-  const deleteContact = useContactsStore((s) => s.deleteContact);
-
   return (
     <div className="card_container ">
       <img

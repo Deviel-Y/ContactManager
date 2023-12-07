@@ -18,7 +18,7 @@ export const getContact = (contactId: string) => {
   return axios.get(url);
 };
 
-export const deleteContact = (contactId: string) => {
+export const deleteContact = (contactId: number) => {
   const url: string = `${SERVER_URL}/contacts/${contactId}`;
   return axios.delete(url);
 };
