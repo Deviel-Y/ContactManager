@@ -1,19 +1,17 @@
-import axios from "axios";
 import { useEffect } from "react";
-import { ContactCard } from "..";
-import Contact from "../Entites/Contact";
-import useContactsStore from "../contactStore";
 import { useLocation } from "react-router-dom";
+import { ContactCard } from "..";
+import { getAllContacts } from "../Services/contactsServices";
+import useContactsStore from "../contactStore";
 
 const CardContainer = () => {
   const contacts = useContactsStore((s) => s.contacts);
   const setContacts = useContactsStore((s) => s.setContacts);
+
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        const response = await axios.get<Contact[]>(
-          "http://localhost:8000/contacts"
-        );
+        const response = await getAllContacts();
         setContacts(response.data);
       } catch (error) {
         console.error("Error fetching contacts:", error);
