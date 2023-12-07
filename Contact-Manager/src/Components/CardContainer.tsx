@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { ContactCard } from "..";
-import { getAllContacts } from "../Services/contactsServices";
+import { getAllContacts, getAllgroups } from "../Services/contactsServices";
 import useContactsStore from "../contactStore";
 
 const CardContainer = () => {
   const contacts = useContactsStore((s) => s.contacts);
   const setContacts = useContactsStore((s) => s.setContacts);
+  const setGroups = useContactsStore((s) => s.setGroups);
 
   useEffect(() => {
     const fetchContacts = async () => {
@@ -18,8 +19,18 @@ const CardContainer = () => {
       }
     };
 
+    const fetchGroups = async () => {
+      try {
+        const response = await getAllgroups();
+        setGroups(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchGroups();
     fetchContacts();
-  }, [setContacts]);
+  }, []);
 
   const location = useLocation();
   const searchedItem = location.search.slice(8);
