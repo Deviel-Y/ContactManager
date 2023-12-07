@@ -26,14 +26,14 @@ const CardContainer = () => {
   const location = useLocation();
   const searchedItem = location.search.slice(8);
 
+  const filteredContact = contacts.filter((contact) =>
+    contact?.fullname.toLowerCase().includes(searchedItem)
+  );
+
   return (
     <section className="card_container_section">
-      {contacts
-        .filter((contact) =>
-          contact.fullname.toLowerCase().includes(searchedItem)
-        )
-
-        .map((contact) => (
+      {filteredContact &&
+        filteredContact.map((contact) => (
           <ContactCard key={contact.id} contact={contact} />
         ))}
     </section>
