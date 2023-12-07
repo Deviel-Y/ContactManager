@@ -8,7 +8,6 @@ interface ContactStore {
   setGroups: (group: Group[]) => void;
   setContacts: (contacts: Contact[]) => void;
   deleteContact: (id: number) => void;
-  addContact: (newContact: Contact) => void;
 }
 
 const useContactsStore = create<ContactStore>((set) => ({
@@ -20,8 +19,6 @@ const useContactsStore = create<ContactStore>((set) => ({
     set((store) => ({
       contacts: store.contacts.filter((contact) => contact.id !== id),
     })),
-  addContact: (newContact) =>
-    set((store) => ({ contacts: [...store.contacts, newContact] })),
 }));
 
 export default useContactsStore;
