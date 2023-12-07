@@ -1,12 +1,13 @@
 import { BsEye, BsPen, BsTrash } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Contact from "../Entites/Contact";
-import { deleteContact } from "../Services/contactsServices";
+import contactService from "../Services/contactService";
 
-interface Prop {
+interface Props {
   contact: Contact;
 }
-const ContactCard = ({ contact }: Prop) => {
+
+const ContactCard = ({ contact }: Props) => {
   return (
     <div className="card_container ">
       <img
@@ -27,7 +28,7 @@ const ContactCard = ({ contact }: Prop) => {
           <BsPen className="button_icon" fill="dodgerblue" />
         </button>
         <button
-          onClick={() => deleteContact(contact.id)}
+          onClick={() => contactService.delete(contact.id)}
           className="contact_remove_button"
         >
           <BsTrash className="button_icon" fill="red" />

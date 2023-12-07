@@ -1,19 +1,23 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { ContactCard } from "..";
-import { getAllContacts, getAllgroups } from "../Services/contactsServices";
+import contactSevice from "../Services/contactService";
 import useContactsStore from "../contactStore";
+import groupService from "../Services/groupService";
 
 const CardContainer = () => {
   const contacts = useContactsStore((s) => s.contacts);
   const setContacts = useContactsStore((s) => s.setContacts);
   const setGroups = useContactsStore((s) => s.setGroups);
 
+  const contactHttpService = contactSevice.getAll();
+  const groupHttpSevice = groupService.getAll();
+
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        const response = await getAllContacts();
-        setContacts(response.data);
+        const response = await contactHttpService;
+        setContacts(response);
       } catch (error) {
         console.error("Error fetching contacts:", error);
       }
@@ -21,8 +25,8 @@ const CardContainer = () => {
 
     const fetchGroups = async () => {
       try {
-        const response = await getAllgroups();
-        setGroups(response.data);
+        const response = await groupHttpSevice;
+        setGroups(response);
       } catch (error) {
         console.log(error);
       }
