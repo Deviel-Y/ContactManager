@@ -108,7 +108,9 @@ const AddContact = () => {
           <button className="btn btn-danger mx-3" type="reset">
             Reset
           </button>
-          <button className="btn btn-secondary">Cancel</button>
+          <button onClick={() => navigate("/")} className="btn btn-secondary">
+            Cancel
+          </button>
         </div>
       </form>
     </section>
