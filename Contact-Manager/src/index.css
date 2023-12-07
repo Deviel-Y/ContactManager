@@ -30,12 +30,12 @@
   margin-bottom: 25px;
 }
 
-html {
-  color: var(--text-color);
-  font-family: "Vazir";
+body {
+  height: 100vh;
 }
 
 * {
+  font-family: "Vazir";
   box-sizing: border-box;
   background-color: var(--background-color);
   color: var(--text-color);
@@ -114,6 +114,8 @@ li {
   background-color: var(--card-background);
 }
 .card_container {
+  width: 600px;
+  height: 200px;
   display: flex;
   border-radius: 20px;
   align-items: center;
@@ -194,7 +196,8 @@ li {
 .card_container_section {
   margin-top: 25px;
   display: grid;
-  grid-template-columns: 50vw 50vw;
+  grid-template-columns: 1fr 1fr;
+  /* grid-template-rows: ; */
 }
 
 /* AddContact Component */
@@ -215,13 +218,15 @@ li {
   backdrop-filter: blur(10px);
   padding: 1.5rem;
   width: 500px;
-  height: 530px;
+  height: 600px;
   border-radius: 30px;
 }
 
 .input_section,
 label,
-form h2 {
+form h2,
+form select {
+  outline: 0;
   background-color: transparent;
   color: rgb(34, 34, 34);
   font-weight: 600;

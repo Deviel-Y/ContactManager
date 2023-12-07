@@ -6,7 +6,7 @@
       "photo": "https://randomuser.me/api/portraits/men/51.jpg",
       "mobile": "09020000000",
       "job": "front-end web developer",
-      "group": "1",
+      "group": "Family",
       "id": 1
     },
     {
@@ -15,11 +15,18 @@
       "photo": "https://randomuser.me/api/portraits/men/75.jpg",
       "mobile": "09120000000",
       "job": "back-end web developer",
-      "group": "2",
+      "group": "Friend",
       "id": 2
+    },
+    {
+      "group": "Colleague",
+      "fullname": "1231",
+      "mobile": "123123",
+      "email": "asd@sad",
+      "job": "asdasd",
+      "id": 3
     }
   ],
-
   "groups": [
     {
       "id": 1,
@@ -34,7 +41,7 @@
       "name": "Family"
     },
     {
-      "id": 3,
+      "id": 4,
       "name": "Relaive"
     }
   ]

@@ -19,7 +19,7 @@ const ContactInfo = () => {
         <li>Phone number : {contact?.mobile}</li>
         <li>Email Address : {contact?.email}</li>
         <li>Job: {contact?.job}</li>
-        {/* <li>Group : {contact?.}</li> */}
+        <li>Group : {contact?.group}</li>
       </ul>
     </div>
   );
