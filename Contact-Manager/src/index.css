@@ -27,6 +27,7 @@
 /* navbar : Customize bootstrap class */
 .navbar {
   border-bottom: 1px solid gray;
+  margin-bottom: 25px;
 }
 
 html {
@@ -76,6 +77,7 @@ html {
 
 /* AddContactButton Component  */
 .add_contact {
+  text-decoration: none;
   background-color: var(--add-contact-color);
   border: 1px solid var(--add-contact-color);
   outline: 0;
@@ -190,6 +192,37 @@ li {
 /* CardContainer Component */
 
 .card_container_section {
+  margin-top: 25px;
   display: grid;
   grid-template-columns: 50vw 50vw;
+}
+
+/* AddContact Component */
+
+.form_container {
+  background: url("./assets/addContactBackground.jpg");
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1.5rem 4rem;
+  height: 100vh;
+}
+
+.form_inputs {
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  width: 35vw;
+  height: 530px;
+  border-radius: 30px;
+}
+
+.input_section,
+label,
+form h2 {
+  background-color: transparent;
+  color: rgb(34, 34, 34);
+  font-weight: 600;
 }

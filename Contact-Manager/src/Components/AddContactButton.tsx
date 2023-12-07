@@ -1,7 +1,11 @@
+import { Link } from "react-router-dom";
+
 const AddContactButton = () => {
   return (
     <section>
-      <button className="add_contact">Add Contact</button>
+      <Link to={"contacts/add"} className="add_contact">
+        Add Contact
+      </Link>
     </section>
   );
 };
