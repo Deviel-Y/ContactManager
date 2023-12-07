@@ -34,7 +34,7 @@ const CardContainer = () => {
 
     fetchGroups();
     fetchContacts();
-  }, [contacts]);
+  }, [setContacts, setGroups]);
 
   const location = useLocation();
   const searchedItem = location.search.slice(8);

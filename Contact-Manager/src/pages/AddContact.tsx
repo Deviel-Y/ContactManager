@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 const AddContact = () => {
   const [formState, setFormState] = useState({} as Contact);
   const contacts = useContactsStore((store) => store.contacts);
+  const groups = useContactsStore((store) => store.groups);
   const navigate = useNavigate();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -86,6 +87,19 @@ const AddContact = () => {
             id="Job"
             className="form-control"
           />
+        </div>
+        <div className="mb-4 input_section">
+          <label htmlFor="group" className="form-label">
+            Group
+          </label>
+          <select required name="group" id="group" className="form-select">
+            <option value="">Select a group</option>
+            {groups.map((group) => (
+              <option value={group.name} key={group.id}>
+                {group.name}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="mb-4 input_section">
           <button className="btn btn-primary" type="submit">
