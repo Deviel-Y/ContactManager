@@ -11,11 +11,27 @@ const AddContact = () => {
   const navigate = useNavigate();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormState((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    const { name, value, type, files } = e.target;
+
+    if (type === "file") {
+      console.log(type);
+
+      const file = files?.[0];
+
+      if (file) {
+        const imageUrl = URL.createObjectURL(file);
+
+        setFormState((prevState) => ({
+          ...prevState,
+          photo: imageUrl,
+        }));
+      }
+    } else {
+      setFormState((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -85,6 +101,19 @@ const AddContact = () => {
             maxLength={35}
             type="text"
             id="Job"
+            className="form-control"
+          />
+        </div>
+        <div className="mb-4 input_section">
+          <label htmlFor="photo" className="form-label">
+            Photo
+          </label>
+          <input
+            onChange={handleChange}
+            name="photo"
+            type="file"
+            accept="image/*"
+            id="photo"
             className="form-control"
           />
         </div>

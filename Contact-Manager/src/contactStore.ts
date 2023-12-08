@@ -4,17 +4,23 @@ import { Group } from "./Entites/Group";
 
 interface ContactStore {
   contacts: Contact[];
+  setContacts: (contacts: Contact[]) => void;
+  deleteContact: (id: number) => void;
+
   groups: Group[];
   setGroups: (group: Group[]) => void;
-  setContacts: (contacts: Contact[]) => void;
 }
 
 const useContactsStore = create<ContactStore>((set) => ({
-  groups: [],
-  setGroups: (groups) => set({ groups }),
-
   contacts: [],
   setContacts: (contacts) => set({ contacts }),
+  deleteContact: (id) =>
+    set((store) => ({
+      contacts: store.contacts.filter((contact) => contact.id !== id),
+    })),
+
+  groups: [],
+  setGroups: (groups) => set({ groups }),
 }));
 
 export default useContactsStore;
