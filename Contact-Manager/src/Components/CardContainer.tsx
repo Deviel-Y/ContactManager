@@ -1,11 +1,13 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ContactCard } from "..";
 import contactSevice from "../Services/contactService";
-import useContactsStore from "../contactStore";
 import groupService from "../Services/groupService";
+import useContactsStore from "../contactStore";
+import styles from "../Styles/CardContainer.module.css";
 
 const CardContainer = () => {
+  const navigate = useNavigate();
   const contacts = useContactsStore((s) => s.contacts);
   const setContacts = useContactsStore((s) => s.setContacts);
   const setGroups = useContactsStore((s) => s.setGroups);
@@ -44,12 +46,22 @@ const CardContainer = () => {
   );
 
   return (
-    <section className="card_container_section">
-      {filteredContact &&
-        filteredContact.map((contact) => (
-          <ContactCard key={contact.id} contact={contact} />
-        ))}
-    </section>
+    <div>
+      <div>
+        <button
+          onClick={() => navigate("contacts/add")}
+          className={[styles.btn, styles.addContact].join(" ")}
+        >
+          Add Contact
+        </button>
+      </div>
+      <section className="card_container_section">
+        {filteredContact &&
+          filteredContact.map((contact) => (
+            <ContactCard key={contact.id} contact={contact} />
+          ))}
+      </section>
+    </div>
   );
 };
 

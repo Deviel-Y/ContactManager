@@ -15,6 +15,11 @@
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: rgba(255, 255, 255, 0.2);
+  transition: all 0.15s;
+}
+
+.card:hover {
+  transform: scale(1.02);
 }
 
 .contactPhoto {
@@ -67,6 +72,7 @@
 }
 
 .btnShow:hover {
+  transform: translateY(3px);
   color: rgb(56, 56, 56);
   background-color: #76d4c8;
 }
@@ -79,6 +85,7 @@
 .btnDelete:hover {
   color: rgb(250, 241, 223);
   background-color: rgb(215, 68, 68);
+  transform: translateY(3px);
 }
 
 .btnEdit {
@@ -89,4 +96,5 @@
 .btnEdit:hover {
   color: rgb(86, 86, 85);
   background-color: rgb(209, 200, 66);
+  transform: translateY(3px);
 }

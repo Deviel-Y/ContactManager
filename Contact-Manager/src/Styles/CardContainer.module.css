@@ -1,0 +1,19 @@
+.btn {
+  border-radius: 20px;
+  outline: 0;
+  margin: 10px 55px;
+  padding: 10px 15px;
+  border: 0;
+}
+
+.addContact {
+  background-color: #81e6d9;
+  color: black;
+  font-size: 20px;
+  transition: all 0.15s;
+}
+
+.btn:hover {
+  background-color: #75d4c7;
+  transform: translateY(3px);
+}
