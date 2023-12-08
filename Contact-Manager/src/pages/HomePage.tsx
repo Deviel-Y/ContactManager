@@ -1,4 +1,4 @@
-import { AddContactButton, CardContainer, Navbar } from "..";
+import { CardContainer, Navbar } from "..";
 
 const HomePage = () => {
   return (

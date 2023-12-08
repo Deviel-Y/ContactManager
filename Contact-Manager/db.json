@@ -16,15 +16,6 @@
       "mobile": "09120000000",
       "job": "back-end web developer",
       "group": "Friend",
-      "id": 2
-    },
-    {
-      "fullname": "John Doe",
-      "email": "John.Doe@gmail.com",
-      "photo": "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400",
-      "mobile": "09120000000",
-      "job": "back-end web developer",
-      "group": "Friend",
       "id": 3
     },
     {

@@ -55,7 +55,7 @@ const CardContainer = () => {
           Add Contact
         </button>
       </div>
-      <section className="card_container_section">
+      <section className={styles.cardContainerSection}>
         {filteredContact &&
           filteredContact.map((contact) => (
             <ContactCard key={contact.id} contact={contact} />

@@ -96,13 +96,7 @@ body {
 
 /* CardContainer Component */
 
-.card_container_section {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-items: center;
-  margin-top: 25px;
-  height: 100vh;
-}
+
 
 /* AddContact Component */
 

@@ -17,3 +17,11 @@
   background-color: #75d4c7;
   transform: translateY(3px);
 }
+
+.cardContainerSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  margin-top: 25px;
+  height: 100vh;
+}
