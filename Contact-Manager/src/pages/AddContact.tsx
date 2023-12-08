@@ -1,8 +1,9 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import useContactsStore from "../contactStore";
-import Contact from "../Entites/Contact";
-import { createContacts } from "../Services/contactsServices";
 import { useNavigate } from "react-router-dom";
+import Contact from "../Entites/Contact";
+import styles from "../Styles/addContact.module.css";
+import useContactsStore from "../contactStore";
+import contactService from "../Services/contactService";
 
 const AddContact = () => {
   const [formState, setFormState] = useState({} as Contact);
@@ -10,17 +11,17 @@ const AddContact = () => {
   const groups = useContactsStore((store) => store.groups);
   const navigate = useNavigate();
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, files } = e.target;
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>
+  ) => {
+    const target = e.target as HTMLInputElement;
+    const { name, value, type } = target;
 
     if (type === "file") {
-      console.log(type);
-
-      const file = files?.[0];
+      const file = target.files?.[0];
 
       if (file) {
         const imageUrl = URL.createObjectURL(file);
-
         setFormState((prevState) => ({
           ...prevState,
           photo: imageUrl,
@@ -33,23 +34,23 @@ const AddContact = () => {
       }));
     }
   };
-
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newContact = {
       ...formState,
       id: contacts.length + 1,
     };
-    createContacts(newContact);
+    contactService.create(newContact);
+
     navigate("/");
   };
 
   return (
-    <section className="form_container">
-      <form className="form_inputs" onSubmit={handleSubmit}>
+    <section className={styles.formContainer}>
+      <form className={styles.formInputs} onSubmit={handleSubmit}>
         <h2 className="mb-3">Add a contact</h2>
-        <div className="mb-4 input_section">
-          <label className="form-label" htmlFor="fullName">
+        <div className={["mb-3", styles.inputSection].join(" ")}>
+          <label className={styles.formLabel} htmlFor="fullName">
             Full Name
           </label>
           <input
@@ -62,7 +63,7 @@ const AddContact = () => {
             className="form-control"
           />
         </div>
-        <div className="mb-4 input_section">
+        <div className={["mb-3", styles.inputSection].join(" ")}>
           <label className="form-label" htmlFor="mobile">
             Phone Number
           </label>
@@ -76,7 +77,7 @@ const AddContact = () => {
             className="form-control"
           />
         </div>
-        <div className="mb-4 input_section">
+        <div className={["mb-3", styles.inputSection].join(" ")}>
           <label className="form-label" htmlFor="email">
             Email Address
           </label>
@@ -90,7 +91,7 @@ const AddContact = () => {
             className="form-control"
           />
         </div>
-        <div className="mb-4 input_section">
+        <div className={["mb-3", styles.inputSection].join(" ")}>
           <label className="form-label" htmlFor="Job">
             Job
           </label>
@@ -104,7 +105,7 @@ const AddContact = () => {
             className="form-control"
           />
         </div>
-        <div className="mb-4 input_section">
+        <div className={["mb-3", styles.inputSection].join(" ")}>
           <label htmlFor="photo" className="form-label">
             Photo
           </label>
@@ -117,11 +118,17 @@ const AddContact = () => {
             className="form-control"
           />
         </div>
-        <div className="mb-4 input_section">
+        <div className={["mb-3", styles.inputSection].join(" ")}>
           <label htmlFor="group" className="form-label">
             Group
           </label>
-          <select required name="group" id="group" className="form-select">
+          <select
+            onChange={handleChange}
+            required
+            name="group"
+            id="group"
+            className="form-select"
+          >
             <option value="">Select a group</option>
             {groups.map((group) => (
               <option value={group.name} key={group.id}>
@@ -130,7 +137,7 @@ const AddContact = () => {
             ))}
           </select>
         </div>
-        <div className="mb-4 input_section">
+        <div className={["mb-3", styles.inputSection].join(" ")}>
           <button className="btn btn-primary" type="submit">
             Add Contact
           </button>

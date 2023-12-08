@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import styles from "../Styles/ContactCard.module.css";
 import Contact from "../Entites/Contact";
-import { deleteContact } from "../Services/contactsServices";
 import useContactsStore from "../contactStore";
+import contactService from "../Services/contactService";
 
 interface Props {
   contact: Contact;
@@ -10,6 +10,7 @@ interface Props {
 
 const ContactCard = ({ contact }: Props) => {
   const deleteContactStore = useContactsStore((s) => s.deleteContact);
+  const deleteContact = contactService.delete;
 
   const navigate = useNavigate();
 
