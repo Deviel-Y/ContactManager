@@ -94,110 +94,14 @@ body {
   border: 1px solid rgb(235, 153, 1);
 }
 
-/* for all of the buttons */
-.add_contact:active,
-.contact_edit_button:active,
-.contact_remove_button:active,
-.contact_detail_button:active {
-  transform: translateY(3px);
-}
-
-/* ContactCard Component */
-
-.card_container,
-.button_icon,
-.contact_picture,
-.contact_info,
-.action_buttons,
-button,
-li {
-  background-color: var(--card-background);
-}
-.card_container {
-  width: 600px;
-  height: 200px;
-  display: flex;
-  border-radius: 20px;
-  align-items: center;
-  justify-content: space-around;
-  padding: 15px;
-  margin: 1rem;
-}
-
-.contact_picture,
-button,
-.contact_detail_button {
-  border-radius: 20px;
-  transition: all 0.25s;
-}
-
-.contact_info {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
-.contact_info,
-li {
-  list-style: none;
-  font-weight: 500;
-  font-size: 20px;
-}
-
-.action_buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.button_icon {
-  font-size: 25px;
-  background: transparent;
-}
-
-.contact_detail_button {
-  background-color: var(--show-button);
-  border: 1px solid var(--show-button);
-}
-
-.contact_edit_button {
-  background-color: var(--edit-button);
-  border: 1px solid var(--edit-button);
-}
-
-.contact_remove_button {
-  background-color: var(--remove-button);
-  border: 1px solid var(--remove-button);
-}
-
-.contact_detail_button:hover {
-  background-color: var(--show-button-hover);
-  border: 1px solid var(--show-button-hover);
-}
-
-.contact_edit_button:hover {
-  background-color: var(--edit-button-hover);
-  border: 1px solid var(--edit-button-hover);
-}
-
-.contact_remove_button:hover {
-  background-color: var(--remove-button-hover);
-  border: 1px solid var(--remove-button-hover);
-}
-
-.contact_edit_button,
-.contact_remove_button,
-.contact_detail_button {
-  padding: 12px;
-}
-
 /* CardContainer Component */
 
 .card_container_section {
-  margin-top: 25px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* grid-template-rows: ; */
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  margin-top: 25px;
+  height: 100vh;
 }
 
 /* AddContact Component */

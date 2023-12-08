@@ -1,0 +1,92 @@
+.contactInfo,
+.contactInfoItemSpan,
+.contactPhoto,
+.contactInfoItem,
+.actionButtons,
+.contactName {
+  background-color: transparent;
+}
+
+.card {
+  height: 530px;
+  border-radius: 40px;
+  padding: 1.2rem;
+  margin: 1rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.contactPhoto {
+  background-color: transparent;
+  border-radius: 30px;
+  background: none;
+  object-fit: cover;
+  width: 350px;
+  height: 230px;
+}
+
+.contactName {
+  font-size: 30px;
+  background-color: transparent;
+  margin: 0;
+}
+
+.contactInfo {
+  list-style: none;
+  line-height: 30px;
+  padding: 0 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.contactInfoItemSpan {
+  color: rgb(165, 165, 165);
+  margin-right: 5px;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn {
+  cursor: pointer;
+  outline: 0;
+  font-size: 17px;
+  border-radius: 15px;
+  padding: 0.7rem 1.5rem;
+  border: 0;
+  font-weight: 600;
+  transition: all 0.15s;
+}
+
+.btnShow {
+  color: rgb(56, 56, 56);
+  background-color: #81e6d9;
+}
+
+.btnShow:hover {
+  color: rgb(56, 56, 56);
+  background-color: #76d4c8;
+}
+
+.btnDelete {
+  color: rgb(250, 241, 223);
+  background-color: rgb(230, 72, 72);
+}
+
+.btnDelete:hover {
+  color: rgb(250, 241, 223);
+  background-color: rgb(215, 68, 68);
+}
+
+.btnEdit {
+  color: rgb(86, 86, 85);
+  background-color: rgb(230, 219, 72);
+}
+
+.btnEdit:hover {
+  color: rgb(86, 86, 85);
+  background-color: rgb(209, 200, 66);
+}

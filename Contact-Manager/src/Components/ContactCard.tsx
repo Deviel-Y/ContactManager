@@ -1,7 +1,7 @@
-import { BsEye, BsPen, BsTrash } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import styles from "../ContactCard.module.css";
 import Contact from "../Entites/Contact";
-import contactService from "../Services/contactService";
+import { deleteContact } from "../Services/contactsServices";
 import useContactsStore from "../contactStore";
 
 interface Props {
@@ -9,35 +9,52 @@ interface Props {
 }
 
 const ContactCard = ({ contact }: Props) => {
-  const deleteContact = useContactsStore((s) => s.deleteContact);
+  const deleteContactStore = useContactsStore((s) => s.deleteContact);
+
+  const navigate = useNavigate();
 
   return (
-    <div className="card_container ">
+    <div className={styles.card}>
       <img
-        className="contact_picture"
+        className={styles.contactPhoto}
         src={contact.photo}
-        alt="contact picture"
+        alt={`contact name : ${contact.fullname}`}
       />
-      <ul className="contact_info">
-        <li>Fullname : {contact.fullname}</li>
-        <li>Phone number : {contact.mobile}</li>
-        <li>Email Address : {contact.email}</li>
+      <h2 className={styles.contactName}>{contact.fullname}</h2>
+      <ul className={styles.contactInfo}>
+        <li className={styles.contactInfoItem}>
+          <span className={styles.contactInfoItemSpan}>Phone Number :</span>
+          {contact.mobile}
+        </li>
+        <li className={styles.contactInfoItem}>
+          <span className={styles.contactInfoItemSpan}>Email Address :</span>
+          {contact.email}
+        </li>
+        <li className={styles.contactInfoItem}>
+          <span className={styles.contactInfoItemSpan}>Job :</span>
+          {contact.job}
+        </li>
+        <li className={styles.contactInfoItem}>
+          <span className={styles.contactInfoItemSpan}>Group :</span>
+          {contact.group}
+        </li>
       </ul>
-      <div className="action_buttons">
-        <Link to={`/contacts/${contact.id}`} className="contact_detail_button">
-          <BsEye className="button_icon" fill="orangered" />
-        </Link>
-        <button className=" contact_edit_button">
-          <BsPen className="button_icon" fill="dodgerblue" />
+      <div className={styles.actionButtons}>
+        <button
+          onClick={() => navigate(`/contacts/${contact.id}`)}
+          className={[styles.btn, styles.btnShow].join(" ")}
+        >
+          Show
         </button>
         <button
           onClick={() => {
-            contactService.delete(contact.id), deleteContact(contact.id);
+            deleteContact(contact.id), deleteContactStore(contact.id);
           }}
-          className="contact_remove_button"
+          className={[styles.btn, styles.btnDelete].join(" ")}
         >
-          <BsTrash className="button_icon" fill="red" />
+          Delete
         </button>
+        <button className={[styles.btn, styles.btnEdit].join(" ")}>Edit</button>
       </div>
     </div>
   );
