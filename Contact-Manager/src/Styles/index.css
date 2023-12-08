@@ -1,15 +1,6 @@
 :root {
   --text-color: #ffffff;
   --background-color: #27374d;
-  --border-color: #526d82;
-  --add-contact-color: rgb(255, 184, 52);
-  --card-background: rgb(100, 119, 132);
-  --show-button: rgb(83, 30, 0);
-  --edit-button: rgb(27, 3, 94);
-  --remove-button: rgb(100, 0, 0);
-  --show-button-hover: rgb(119, 44, 1);
-  --edit-button-hover: rgb(36, 2, 129);
-  --remove-button-hover: rgb(145, 0, 0);
 }
 
 @font-face {
@@ -24,12 +15,6 @@
   font-display: swap;
 }
 
-/* navbar : Customize bootstrap class */
-.navbar {
-  border-bottom: 1px solid gray;
-  margin-bottom: 25px;
-}
-
 body {
   height: 100vh;
 }
@@ -41,7 +26,6 @@ body {
   color: var(--text-color);
 }
 
-/* Navbar Component */
 .input_container {
   display: flex;
   flex-direction: row-reverse;

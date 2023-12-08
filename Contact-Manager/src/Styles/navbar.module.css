@@ -1,0 +1,10 @@
+.heading {
+  font-size: 30px;
+  margin: 0;
+}
+
+/* navbar : Customize bootstrap class */
+.navbar {
+  border-bottom: 1px solid gray;
+  margin-bottom: 25px;
+}

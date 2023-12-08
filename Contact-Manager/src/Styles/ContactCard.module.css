@@ -32,9 +32,9 @@
 }
 
 .contactName {
-  font-size: 30px;
+  font-size: 35px;
   background-color: transparent;
-  margin: 0.8rem;
+  margin: 0.8rem 5px;
 }
 
 .contactInfo {
