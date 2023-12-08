@@ -1,0 +1,95 @@
+.mainContainer {
+  background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+  background-size: cover;
+  height: 100vh;
+}
+
+.contactInfo,
+.contactInfoItemSpan,
+.photoContainer,
+.contactInfoItem,
+.actionButtons,
+.contactName,
+.contactJob {
+  background-color: transparent;
+}
+
+.card {
+  height: 580px;
+  width: 400px;
+  border-radius: 40px;
+  padding: 1rem;
+  margin: 2rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: all 0.15s;
+}
+
+.contactPhoto {
+  border-radius: 100%;
+  object-fit: cover;
+  width: 250px;
+  height: 250px;
+}
+
+.photoContainer,
+.mainContainer,
+.actionButtons,
+.contactJob {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contactName {
+  color: black;
+  text-align: center;
+  font-size: 40px;
+  margin: 0.4rem 0 0.3rem 0;
+}
+
+.contactJob {
+  color: black;
+  font-size: 20px;
+  margin: 5px 0 30px 0;
+}
+
+.contactInfoItem {
+  color: black;
+}
+
+.contactInfo {
+  list-style: none;
+  line-height: 30px;
+  padding: 0 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+  margin-bottom: 20px;
+}
+
+.contactInfoItemSpan {
+  color: #006eae;
+  margin-right: 5px;
+}
+
+.btn {
+  cursor: pointer;
+  width: 50%;
+  outline: 0;
+  font-size: 23px;
+  border-radius: 15px;
+  padding: 0.7rem 1.5rem;
+  border: 0;
+  font-weight: 600;
+  transition: all 0.15s;
+}
+
+.btnBack {
+  background-color: #006eae;
+}
+
+.btnBack:hover {
+  background-color: rgb(1, 102, 161);
+}

@@ -12,7 +12,7 @@ const AddContact = () => {
   const navigate = useNavigate();
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const target = e.target as HTMLInputElement;
     const { name, value, type } = target;

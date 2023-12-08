@@ -28,22 +28,13 @@
       "id": 3
     },
     {
-      "fullname": "John Doe",
-      "email": "John.Doe@gmail.com",
-      "photo": "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400",
-      "mobile": "09120000000",
-      "job": "back-end web developer",
-      "group": "Friend",
-      "id": 4
-    },
-    {
-      "fullname": "asd",
-      "mobile": "2",
-      "email": "asd@asda",
-      "job": "asda",
-      "photo": "blob:http://localhost:5173/7b9cf99d-1f07-4296-be0a-e0b6c0a2270d",
+      "fullname": "gfdgfd",
+      "mobile": "543543",
+      "email": "sfd@gfdgfd",
+      "job": "fdgf",
+      "photo": "blob:http://localhost:5173/e445ab4a-0bd9-4345-ab0e-fd8527910e38",
       "group": "Colleague",
-      "id": 5
+      "id": 4
     }
   ],
   "groups": [

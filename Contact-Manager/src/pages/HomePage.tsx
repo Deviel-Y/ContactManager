@@ -2,10 +2,10 @@ import { CardContainer, Navbar } from "..";
 
 const HomePage = () => {
   return (
-    <>
+    <main>
       <Navbar />
       <CardContainer />
-    </>
+    </main>
   );
 };
 

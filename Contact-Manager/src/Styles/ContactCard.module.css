@@ -23,7 +23,6 @@
 }
 
 .contactPhoto {
-  background-color: transparent;
   border-radius: 30px;
   background: none;
   object-fit: cover;
@@ -33,7 +32,6 @@
 
 .contactName {
   font-size: 35px;
-  background-color: transparent;
   margin: 0.8rem 5px;
 }
 
@@ -46,7 +44,7 @@
 }
 
 .contactInfoItemSpan {
-  color: rgb(165, 165, 165);
+  color: #76d4c8;
   margin-right: 5px;
 }
 

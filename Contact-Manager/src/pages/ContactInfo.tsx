@@ -1,26 +1,48 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useContactsStore from "../contactStore";
+import styles from "../Styles/ContactInfo.module.css";
 
 const ContactInfo = () => {
   const { id } = useParams();
-
+  const navigate = useNavigate();
   const contacts = useContactsStore((s) => s.contacts);
   const contact = contacts.find((contact) => contact.id === parseInt(id!));
 
   return (
-    <div className="card_container ">
-      <img
-        className="contact_picture"
-        src={contact?.photo}
-        alt="contact picture"
-      />
-      <ul className="contact_info">
-        <li>Fullname : {contact?.fullname}</li>
-        <li>Phone number : {contact?.mobile}</li>
-        <li>Email Address : {contact?.email}</li>
-        <li>Job: {contact?.job}</li>
-        <li>Group : {contact?.group}</li>
-      </ul>
+    <div className={styles.mainContainer}>
+      <div className={styles.card}>
+        <div className={styles.photoContainer}>
+          <img
+            className={styles.contactPhoto}
+            src={contact?.photo}
+            alt={`contact name : ${contact?.fullname}`}
+          />
+        </div>
+        <h2 className={styles.contactName}>{contact?.fullname}</h2>
+        <h3 className={styles.contactJob}>{contact?.job}</h3>
+        <ul className={styles.contactInfo}>
+          <li className={styles.contactInfoItem}>
+            <span className={styles.contactInfoItemSpan}>Phone Number :</span>
+            {contact?.mobile}
+          </li>
+          <li className={styles.contactInfoItem}>
+            <span className={styles.contactInfoItemSpan}>Email Address :</span>
+            {contact?.email}
+          </li>
+          <li className={styles.contactInfoItem}>
+            <span className={styles.contactInfoItemSpan}>Group :</span>
+            {contact?.group}
+          </li>
+        </ul>
+        <div className={styles.actionButtons}>
+          <button
+            onClick={() => navigate("/")}
+            className={[styles.btn, styles.btnBack].join(" ")}
+          >
+            Back
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
