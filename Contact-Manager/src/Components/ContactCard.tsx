@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import styles from "../ContactCard.module.css";
+import styles from "../Styles/ContactCard.module.css";
 import Contact from "../Entites/Contact";
 import { deleteContact } from "../Services/contactsServices";
 import useContactsStore from "../contactStore";
