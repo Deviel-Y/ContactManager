@@ -7,7 +7,6 @@ import contactService from "../Services/contactService";
 
 const AddContact = () => {
   const [formState, setFormState] = useState({} as Contact);
-  const contacts = useContactsStore((store) => store.contacts);
   const groups = useContactsStore((store) => store.groups);
   const navigate = useNavigate();
 
@@ -38,7 +37,7 @@ const AddContact = () => {
     e.preventDefault();
     const newContact = {
       ...formState,
-      id: contacts.length + 1,
+      id: Date.now(),
     };
     contactService.create(newContact);
 

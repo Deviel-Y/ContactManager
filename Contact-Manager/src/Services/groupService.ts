@@ -1,4 +1,3 @@
-import { Group } from "../Entites/Group";
-import APIClient from "./ali-client";
+import create from "./ali-client";
 
-export default new APIClient<Group[]>("/groups");
+export default create("/groups");

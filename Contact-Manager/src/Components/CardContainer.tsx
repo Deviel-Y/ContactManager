@@ -3,8 +3,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { ContactCard } from "..";
 import contactSevice from "../Services/contactService";
 import groupService from "../Services/groupService";
-import useContactsStore from "../contactStore";
 import styles from "../Styles/CardContainer.module.css";
+import useContactsStore from "../contactStore";
+import Contact from "../Entites/Contact";
+import { Group } from "../Entites/Group";
 
 const CardContainer = () => {
   const navigate = useNavigate();
@@ -12,30 +14,13 @@ const CardContainer = () => {
   const setContacts = useContactsStore((s) => s.setContacts);
   const setGroups = useContactsStore((s) => s.setGroups);
 
-  const contactHttpService = contactSevice.getAll();
-  const groupHttpSevice = groupService.getAll();
+  const contactHttpService = contactSevice.getAll<Contact[]>();
+  const groupHttpSevice = groupService.getAll<Group[]>();
 
   useEffect(() => {
-    const fetchContacts = async () => {
-      try {
-        const response = await contactHttpService;
-        setContacts(response);
-      } catch (error) {
-        console.error("Error fetching contacts:", error);
-      }
-    };
+    contactHttpService.then((res) => setContacts(res.data));
 
-    const fetchGroups = async () => {
-      try {
-        const response = await groupHttpSevice;
-        setGroups(response);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchGroups();
-    fetchContacts();
+    groupHttpSevice.then((res) => setGroups(res.data));
   }, [setContacts, setGroups]);
 
   const location = useLocation();
