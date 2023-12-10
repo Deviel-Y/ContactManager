@@ -2,7 +2,7 @@ import { create } from "zustand";
 import Contact from "./Entites/Contact";
 import { Group } from "./Entites/Group";
 
-interface ContactStore {
+interface Store {
   contacts: Contact[];
   setContacts: (contacts: Contact[]) => void;
   deleteContact: (id: number) => void;
@@ -11,7 +11,7 @@ interface ContactStore {
   setGroups: (group: Group[]) => void;
 }
 
-const useContactsStore = create<ContactStore>((set) => ({
+const useStore = create<Store>((set) => ({
   contacts: [],
   setContacts: (contacts) => set({ contacts }),
   deleteContact: (id) =>
@@ -23,4 +23,4 @@ const useContactsStore = create<ContactStore>((set) => ({
   setGroups: (groups) => set({ groups }),
 }));
 
-export default useContactsStore;
+export default useStore;

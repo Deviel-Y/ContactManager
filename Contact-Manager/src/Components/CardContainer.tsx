@@ -1,29 +1,20 @@
-import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ContactCard } from "..";
-import contactSevice from "../Services/contactService";
-import groupService from "../Services/groupService";
+import useStore from "../Store";
 import styles from "../Styles/CardContainer.module.css";
-import useContactsStore from "../contactStore";
-import Contact from "../Entites/Contact";
-import { Group } from "../Entites/Group";
+import useContact from "../hooks/useContacts";
+import useGroups from "../hooks/useGroups";
 
 const CardContainer = () => {
+  useContact();
+  useGroups();
+
   const navigate = useNavigate();
-  const contacts = useContactsStore((s) => s.contacts);
-  const setContacts = useContactsStore((s) => s.setContacts);
-  const setGroups = useContactsStore((s) => s.setGroups);
-
-  const contactHttpService = contactSevice.getAll<Contact[]>();
-  const groupHttpSevice = groupService.getAll<Group[]>();
-
-  useEffect(() => {
-    contactHttpService.then((res) => setContacts(res.data));
-
-    groupHttpSevice.then((res) => setGroups(res.data));
-  }, [setContacts, setGroups]);
 
   const location = useLocation();
+
+  const contacts = useStore((s) => s.contacts);
+
   const searchedItem = location.search.slice(8);
 
   const filteredContact = contacts.filter((contact) =>

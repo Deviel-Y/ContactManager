@@ -1,13 +1,13 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Contact from "../Entites/Contact";
-import styles from "../Styles/addContact.module.css";
-import useContactsStore from "../contactStore";
+import styles from "../Styles/Form.module.css";
+import useStore from "../Store";
 import contactService from "../Services/contactService";
 
 const AddContact = () => {
   const [formState, setFormState] = useState({} as Contact);
-  const groups = useContactsStore((store) => store.groups);
+  const groups = useStore((store) => store.groups);
   const navigate = useNavigate();
 
   const handleChange = (
