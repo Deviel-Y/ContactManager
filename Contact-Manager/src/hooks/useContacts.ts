@@ -1,18 +1,17 @@
-import { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import Contact from "../Entites/Contact";
 import contactService from "../Services/contactService";
-import useStore from "../Store";
 
 const useContact = () => {
-  const setContacts = useStore((s) => s.setContacts);
+  const fetchContacts = () => {
+    return contactService.getAll<Contact[]>().then((res) => res.data);
+  };
 
-  useEffect(() => {
-    const { cancel, request } = contactService.getAll<Contact[]>();
-
-    request.then((res) => setContacts(res.data));
-
-    return () => cancel();
-  }, [setContacts]);
+  return useQuery<Contact[], Error>({
+    queryKey: ["contacts"],
+    queryFn: fetchContacts,
+    staleTime: 5 * 60 * 1000, // 5 minutes
+  });
 };
 
 export default useContact;

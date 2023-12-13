@@ -1,13 +1,13 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Contact from "../Entites/Contact";
-import styles from "../Styles/Form.module.css";
-import useStore from "../Store";
 import contactService from "../Services/contactService";
+import styles from "../Styles/Form.module.css";
+import useGroups from "../hooks/useGroups";
 
 const AddContact = () => {
   const [formState, setFormState] = useState({} as Contact);
-  const groups = useStore((store) => store.groups);
+  const { data: groups } = useGroups();
   const navigate = useNavigate();
 
   const handleChange = (
@@ -129,7 +129,7 @@ const AddContact = () => {
             className="form-select"
           >
             <option value="">Select a group</option>
-            {groups.map((group) => (
+            {groups?.map((group) => (
               <option value={group.name} key={group.id}>
                 {group.name}
               </option>

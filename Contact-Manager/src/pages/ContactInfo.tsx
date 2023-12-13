@@ -1,12 +1,12 @@
 import { useNavigate, useParams } from "react-router-dom";
-import useStore from "../Store";
 import styles from "../Styles/ContactInfo.module.css";
+import useContact from "../hooks/useContacts";
 
 const ContactInfo = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const contacts = useStore((s) => s.contacts);
-  const contact = contacts.find((contact) => contact.id === parseInt(id!));
+  const { data: contacts } = useContact();
+  const contact = contacts?.find((contact) => contact.id === parseInt(id!));
 
   return (
     <div className={styles.mainContainer}>

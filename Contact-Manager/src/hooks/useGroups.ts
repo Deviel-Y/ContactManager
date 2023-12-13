@@ -1,18 +1,16 @@
-import { useEffect } from "react";
-import useStore from "../Store";
-import groupService from "../Services/groupService";
+import { useQuery } from "@tanstack/react-query";
 import { Group } from "../Entites/Group";
+import groupService from "../Services/groupService";
 
 const useGroups = () => {
-  const setGroups = useStore((s) => s.setGroups);
+  const fetchGroups = () => {
+    return groupService.getAll<Group[]>().then((res) => res.data);
+  };
 
-  useEffect(() => {
-    const { cancel, request } = groupService.getAll<Group[]>();
-
-    request.then((res) => setGroups(res.data));
-
-    return () => cancel();
-  }, [setGroups]);
+  return useQuery({
+    queryKey: ["group"],
+    queryFn: fetchGroups,
+  });
 };
 
 export default useGroups;
