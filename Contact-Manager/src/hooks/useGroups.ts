@@ -5,8 +5,13 @@ import { Group } from "../Entites/Group";
 
 const useGroups = () => {
   const setGroups = useStore((s) => s.setGroups);
+
   useEffect(() => {
-    groupService.getAll<Group[]>().then((res) => setGroups(res.data));
+    const { cancel, request } = groupService.getAll<Group[]>();
+
+    request.then((res) => setGroups(res.data));
+
+    return () => cancel();
   }, [setGroups]);
 };
 

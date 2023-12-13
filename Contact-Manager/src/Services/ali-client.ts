@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios from "axios";
 
 const axiosInstance = axios.create({
   baseURL: "http://localhost:8000",
@@ -7,8 +7,14 @@ const axiosInstance = axios.create({
 class APIClient<T> {
   constructor(private endpoint: string) {}
 
-  getAll = <T>(config?: AxiosRequestConfig) => {
-    return axiosInstance.get<T>(this.endpoint, config);
+  getAll = <T>() => {
+    const controller = new AbortController();
+
+    const request = axiosInstance.get<T>(this.endpoint, {
+      signal: controller.signal,
+    });
+
+    return { request, cancel: () => controller.abort() };
   };
 
   delete = (contactId: number) => {
