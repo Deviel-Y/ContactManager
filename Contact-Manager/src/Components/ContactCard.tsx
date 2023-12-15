@@ -1,16 +1,26 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import styles from "../Styles/ContactCard.module.css";
 import Contact from "../Entites/Contact";
-import useStore from "../Store";
 import contactService from "../Services/contactService";
+import styles from "../Styles/ContactCard.module.css";
 
 interface Props {
   contact: Contact;
 }
 
 const ContactCard = ({ contact }: Props) => {
-  const deleteContactStore = useStore((s) => s.deleteContact);
-  const deleteContact = contactService.delete;
+  const queryClient = useQueryClient();
+
+  const deleteContact = useMutation({
+    mutationFn: (contactId: number) =>
+      contactService.delete(contactId).then((res) => res.data),
+
+    onSuccess: (_, contactId) => {
+      queryClient.setQueryData<Contact[]>(["contacts"], (contacts) =>
+        contacts?.filter((contact) => contact.id !== contactId)
+      );
+    },
+  });
 
   const navigate = useNavigate();
 
@@ -48,9 +58,7 @@ const ContactCard = ({ contact }: Props) => {
           Show
         </button>
         <button
-          onClick={() => {
-            deleteContact(contact.id), deleteContactStore(contact.id);
-          }}
+          onClick={() => deleteContact.mutate(contact.id)}
           className={[styles.btn, styles.btnDelete].join(" ")}
         >
           Delete
