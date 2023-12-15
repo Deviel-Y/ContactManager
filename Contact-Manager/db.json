@@ -17,15 +17,6 @@
       "job": "back-end web developer",
       "group": "Friend",
       "id": 2
-    },
-    {
-      "email": "asd@asd",
-      "job": "a",
-      "photo": "blob:http://localhost:5173/a43c5bf2-dc7e-45f1-8d08-16210c375f98",
-      "fullname": "asd",
-      "mobile": "2",
-      "group": "Colleague",
-      "id": 1702467945227
     }
   ],
   "groups": [

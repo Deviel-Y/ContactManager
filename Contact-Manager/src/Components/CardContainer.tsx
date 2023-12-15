@@ -2,11 +2,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { ContactCard } from "..";
 import styles from "../Styles/CardContainer.module.css";
 import useContact from "../hooks/useContacts";
-import useGroups from "../hooks/useGroups";
 
 const CardContainer = () => {
   const { data: contacts } = useContact();
-  useGroups();
 
   const navigate = useNavigate();
 
@@ -29,10 +27,9 @@ const CardContainer = () => {
         </button>
       </div>
       <section className={styles.cardContainerSection}>
-        {filteredContact &&
-          filteredContact.map((contact) => (
-            <ContactCard key={contact.id} contact={contact} />
-          ))}
+        {filteredContact?.map((contact) => (
+          <ContactCard key={contact.id} contact={contact} />
+        ))}
       </section>
     </div>
   );

@@ -4,7 +4,6 @@ import { Group } from "./Entites/Group";
 
 interface Store {
   contacts: Contact[];
-  setContacts: (contacts: Contact[]) => void;
   deleteContact: (id: number) => void;
 
   groups: Group[];
@@ -13,7 +12,6 @@ interface Store {
 
 const useStore = create<Store>((set) => ({
   contacts: [],
-  setContacts: (contacts) => set({ contacts }),
   deleteContact: (id) =>
     set((store) => ({
       contacts: store.contacts.filter((contact) => contact.id !== id),

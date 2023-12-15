@@ -1,3 +1,4 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Contact from "../Entites/Contact";
@@ -6,8 +7,27 @@ import styles from "../Styles/Form.module.css";
 import useGroups from "../hooks/useGroups";
 
 const AddContact = () => {
+  const queryClient = useQueryClient();
+
+  const addContact = useMutation({
+    mutationFn: (contact: Contact) =>
+      contactService.create(contact).then((res) => res.data),
+
+    onSuccess: (savedContacts) => {
+      queryClient.setQueryData<Contact[]>(["contacts"], (contact) => [
+        savedContacts,
+        ...(contact || []),
+      ]);
+    },
+
+    onError: (error) => {
+      console.error("Error adding contact:", error);
+    },
+  });
   const [formState, setFormState] = useState({} as Contact);
+
   const { data: groups } = useGroups();
+
   const navigate = useNavigate();
 
   const handleChange = (
@@ -35,11 +55,13 @@ const AddContact = () => {
   };
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const newContact = {
       ...formState,
       id: Date.now(),
     };
-    contactService.create(newContact);
+
+    addContact.mutate(newContact);
 
     navigate("/");
   };

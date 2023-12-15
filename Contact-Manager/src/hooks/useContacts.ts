@@ -10,7 +10,6 @@ const useContact = () => {
   return useQuery<Contact[], Error>({
     queryKey: ["contacts"],
     queryFn: fetchContacts,
-    staleTime: 5 * 60 * 1000, // 5 minutes
   });
 };
 
