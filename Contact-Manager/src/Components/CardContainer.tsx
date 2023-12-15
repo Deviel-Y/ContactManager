@@ -13,7 +13,7 @@ const CardContainer = () => {
   const searchedItem = location.search.slice(8);
 
   const filteredContact = contacts?.filter((contact) =>
-    contact?.fullname.toLowerCase().includes(searchedItem)
+    contact?.fullname.toLowerCase().includes(searchedItem.toLowerCase())
   );
 
   return (
