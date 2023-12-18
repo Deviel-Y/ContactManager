@@ -19,7 +19,7 @@ class APIClient<T> {
     return axiosInstance.post<T>(this.endpoint, newContact);
   };
 
-  update = (newContact: T, contactId: number) => {
+  update = (contactId: number, newContact: T) => {
     return axiosInstance.put<T>(`${this.endpoint}/${contactId}`, newContact);
   };
 }

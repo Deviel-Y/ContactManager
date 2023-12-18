@@ -6,26 +6,34 @@ import contactService from "../Services/contactService";
 import styles from "../Styles/Form.module.css";
 import useGroups from "../hooks/useGroups";
 
+interface ContactContext {
+  backupContacts: Contact[];
+}
+
 const EditContact = () => {
   const { id } = useParams();
 
   const queryClient = useQueryClient();
-  const editContact = useMutation({
+
+  const editContact = useMutation<Contact, Error, Contact, ContactContext>({
     mutationFn: (contact: Contact) =>
-      contactService.update(contact, parseInt(id!)).then((res) => res.data),
+      contactService.update(parseInt(id!), contact).then((res) => res.data),
 
     onSuccess: (savedContact) => {
-      queryClient.setQueryData<Contact[]>(["contacts"], (old) => {
-        return old?.map((contact) => {
-          if (contact.id === parseInt(id!)) return savedContact;
-          return contact;
-        });
+      queryClient.setQueryData<Contact[]>(["contacts"], (previousContacts) => {
+        return previousContacts?.map((contact) =>
+          contact.id === parseInt(id!) ? savedContact : contact
+        );
       });
       navigate("/");
     },
 
-    onError: (error) => {
+    onError: (error, _newContact, context) => {
+      if (!context) return;
+
       console.error("Error adding contact:", error);
+
+      queryClient.setQueryData<Contact[]>(["contacts"], context.backupContacts);
     },
   });
   const [formState, setFormState] = useState({} as Contact);
