@@ -1,6 +1,6 @@
 import { BsSearch } from "react-icons/bs";
 import { useSearchParams } from "react-router-dom";
-import styles from "../Styles/searchBar.module.css";
+import styles from "../Styles/SearchBar.module.css";
 
 const SearchBar = () => {
   const [searchParams, setSearchParams] = useSearchParams();

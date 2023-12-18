@@ -1,6 +1,6 @@
 import SearchBar from "./SearchBar";
 import { GrContactInfo } from "react-icons/gr";
-import styles from "../Styles/navbar.module.css";
+import styles from "../Styles/Navbar.module.css";
 const Navbar = () => {
   return (
     <nav className={["navbar", "navbar-expand-lg"].join(" ")}>
