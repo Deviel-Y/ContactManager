@@ -52,7 +52,7 @@ const ContactCard = ({ contact }: Props) => {
       </ul>
       <div className={styles.actionButtons}>
         <button
-          onClick={() => navigate(`/contacts/${contact.id}`)}
+          onClick={() => navigate(`/contacts/contactInfo/${contact.id}`)}
           className={[styles.btn, styles.btnShow].join(" ")}
         >
           Show
@@ -63,7 +63,12 @@ const ContactCard = ({ contact }: Props) => {
         >
           Delete
         </button>
-        <button className={[styles.btn, styles.btnEdit].join(" ")}>Edit</button>
+        <button
+          className={[styles.btn, styles.btnEdit].join(" ")}
+          onClick={() => navigate(`/contacts/contactEdit/${contact.id}`)}
+        >
+          Edit
+        </button>
       </div>
     </div>
   );
