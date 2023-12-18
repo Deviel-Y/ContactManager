@@ -7,8 +7,8 @@ const axiosInstance = axios.create({
 class APIClient<T> {
   constructor(private endpoint: string) {}
 
-  getAll = <T>(config?: AxiosRequestConfig) => {
-    return axiosInstance.get<T>(this.endpoint, config);
+  getAll = (config?: AxiosRequestConfig) => {
+    return axiosInstance.get<T[]>(this.endpoint, config);
   };
 
   delete = (contactId: number) => {

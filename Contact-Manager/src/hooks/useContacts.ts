@@ -4,7 +4,7 @@ import contactService from "../Services/contactService";
 
 const useContact = () => {
   const fetchContacts = () => {
-    return contactService.getAll<Contact[]>().then((res) => res.data);
+    return contactService.getAll().then((res) => res.data);
   };
 
   return useQuery<Contact[], Error>({
