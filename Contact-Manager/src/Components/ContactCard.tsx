@@ -26,24 +26,44 @@ const ContactCard = ({ contact }: Props) => {
 
   return (
     <div className={styles.card}>
-      <img
-        className={styles.contactPhoto}
-        src={contact.photo}
-        alt={`contact name : ${contact.fullname}`}
-      />
-      <h2 className={styles.contactName}>{contact.fullname}</h2>
+      {contact.photo && (
+        <>
+          <img
+            className={styles.contactPhoto}
+            src={contact.photo}
+            alt={`contact name : ${contact.fullname}`}
+          />
+        </>
+      )}
+      {contact.fullname && (
+        <h2 className={styles.contactName}>{contact.fullname}</h2>
+      )}
       <ul className={styles.contactInfo}>
         <li className={styles.contactInfoItem}>
-          <span className={styles.contactInfoItemSpan}>Phone Number :</span>
-          {contact.mobile}
+          {contact.mobile && (
+            <>
+              <span className={styles.contactInfoItemSpan}>Phone Number :</span>
+              {contact.mobile}
+            </>
+          )}
         </li>
         <li className={styles.contactInfoItem}>
-          <span className={styles.contactInfoItemSpan}>Email Address :</span>
-          {contact.email}
+          {contact.email && (
+            <>
+              <span className={styles.contactInfoItemSpan}>
+                Email Address :
+              </span>
+              {contact.email}
+            </>
+          )}
         </li>
         <li className={styles.contactInfoItem}>
-          <span className={styles.contactInfoItemSpan}>Job :</span>
-          {contact.job}
+          {contact.job && (
+            <>
+              <span className={styles.contactInfoItemSpan}>Job :</span>
+              {contact.job}
+            </>
+          )}
         </li>
         <li className={styles.contactInfoItem}>
           <span className={styles.contactInfoItemSpan}>Group :</span>
