@@ -5,6 +5,7 @@ import Contact from "../Entites/Contact";
 import contactService from "../Services/contactService";
 import styles from "../Styles/Form.module.css";
 import useGroups from "../hooks/useGroups";
+import useContact from "../hooks/useContacts";
 
 interface ContactContext {
   backupContacts: Contact[];
@@ -12,6 +13,8 @@ interface ContactContext {
 
 const EditContact = () => {
   const { id } = useParams();
+  const { data: contacts } = useContact();
+  const theContact = contacts?.find((contact) => contact.id === parseInt(id!));
 
   const queryClient = useQueryClient();
 
@@ -86,6 +89,7 @@ const EditContact = () => {
             Full Name
           </label>
           <input
+            value={theContact?.fullname}
             onChange={handleChange}
             name="fullname"
             maxLength={35}
@@ -99,6 +103,7 @@ const EditContact = () => {
             Phone Number
           </label>
           <input
+            value={theContact?.mobile}
             onChange={handleChange}
             name="mobile"
             maxLength={20}
@@ -112,6 +117,7 @@ const EditContact = () => {
             Email Address
           </label>
           <input
+            value={theContact?.email}
             onChange={handleChange}
             name="email"
             maxLength={35}
@@ -125,6 +131,7 @@ const EditContact = () => {
             Job
           </label>
           <input
+            value={theContact?.job}
             onChange={handleChange}
             name="job"
             maxLength={35}
@@ -138,6 +145,7 @@ const EditContact = () => {
             Photo
           </label>
           <input
+            required
             onChange={handleChange}
             name="photo"
             type="file"
@@ -151,6 +159,7 @@ const EditContact = () => {
             Group
           </label>
           <select
+            value={theContact?.group}
             onChange={handleChange}
             name="group"
             id="group"
