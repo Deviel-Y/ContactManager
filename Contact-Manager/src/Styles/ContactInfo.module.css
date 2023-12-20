@@ -15,7 +15,7 @@
 }
 
 .card {
-  height: 580px;
+  height: 545px;
   width: 400px;
   border-radius: 40px;
   padding: 1rem;
@@ -92,4 +92,19 @@
 
 .btnBack:hover {
   background-color: rgb(1, 102, 161);
+}
+.groupBadge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  background-color: rgba(6, 1, 161, 0.591);
+  color: white;
+  border-radius: 100px;
+  z-index: 1;
+  position: relative;
+  top: 75px;
+  left: 150px;
+  height: 30px;
+  width: 80px;
 }

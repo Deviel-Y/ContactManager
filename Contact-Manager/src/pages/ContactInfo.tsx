@@ -10,6 +10,7 @@ const ContactInfo = () => {
 
   return (
     <div className={styles.mainContainer}>
+      <div className={styles.groupBadge}>{contact?.group}</div>
       <div className={styles.card}>
         {contact?.photo && (
           <div className={styles.photoContainer}>
@@ -37,12 +38,6 @@ const ContactInfo = () => {
                 Email Address :
               </span>
               {contact.email}
-            </li>
-          )}
-          {contact?.group && (
-            <li className={styles.contactInfoItem}>
-              <span className={styles.contactInfoItemSpan}>Group :</span>
-              {contact?.group}
             </li>
           )}
         </ul>
