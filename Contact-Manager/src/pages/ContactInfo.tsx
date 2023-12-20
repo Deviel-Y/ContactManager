@@ -31,6 +31,14 @@ const ContactInfo = () => {
               {contact?.mobile}
             </li>
           )}
+          {contact?.email && (
+            <li className={styles.contactInfoItem}>
+              <span className={styles.contactInfoItemSpan}>
+                Email Address :
+              </span>
+              {contact.email}
+            </li>
+          )}
           {contact?.group && (
             <li className={styles.contactInfoItem}>
               <span className={styles.contactInfoItemSpan}>Group :</span>
