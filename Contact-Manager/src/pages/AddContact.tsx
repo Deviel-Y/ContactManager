@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Contact from "../Entites/Contact";
-import styles from "../Styles/Form.module.css";
+import styles from "../Styles/AddContact.module.css";
 import useAddContact from "../hooks/useAddContact";
 import useGroups from "../hooks/useGroups";
 
