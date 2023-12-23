@@ -4,7 +4,7 @@ import styles from "../Styles/CardContainer.module.css";
 import useContact from "../hooks/useContacts";
 
 const CardContainer = () => {
-  const { data: contacts } = useContact();
+  const { data: contacts, isLoading } = useContact();
 
   const navigate = useNavigate();
 
@@ -17,21 +17,24 @@ const CardContainer = () => {
   );
 
   return (
-    <div>
+    <>
+      {isLoading && <div className="spinner-grow" />}
       <div>
-        <button
-          onClick={() => navigate("contacts/add")}
-          className={[styles.btn, styles.addContact].join(" ")}
-        >
-          Add Contact
-        </button>
+        <div>
+          <button
+            onClick={() => navigate("contacts/add")}
+            className={[styles.btn, styles.addContact].join(" ")}
+          >
+            Add Contact
+          </button>
+        </div>
+        <section className={styles.cardContainerSection}>
+          {filteredContact?.map((contact) => (
+            <ContactCard key={contact.id} contact={contact} />
+          ))}
+        </section>
       </div>
-      <section className={styles.cardContainerSection}>
-        {filteredContact?.map((contact) => (
-          <ContactCard key={contact.id} contact={contact} />
-        ))}
-      </section>
-    </div>
+    </>
   );
 };
 
