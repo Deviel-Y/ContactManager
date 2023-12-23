@@ -1,26 +1,14 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import Contact from "../Entites/Contact";
-import contactService from "../Services/contactService";
 import styles from "../Styles/ContactCard.module.css";
+import useDeleteContact from "../hooks/useDeleteContact";
 
 interface Props {
   contact: Contact;
 }
 
 const ContactCard = ({ contact }: Props) => {
-  const queryClient = useQueryClient();
-
-  const deleteContact = useMutation({
-    mutationFn: (contactId: number) =>
-      contactService.delete(contactId).then((res) => res.data),
-
-    onSuccess: (_, contactId) => {
-      queryClient.setQueryData<Contact[]>(["contacts"], (contacts) =>
-        contacts?.filter((contact) => contact.id !== contactId)
-      );
-    },
-  });
+  const deleteContact = useDeleteContact();
 
   const navigate = useNavigate();
 
