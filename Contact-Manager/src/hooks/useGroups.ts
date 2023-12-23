@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import groupService from "../Services/groupService";
+import { GROUP_QUERY_KEY_CACHE } from "../constants";
 
 const useGroups = () => {
   const fetchGroups = () => {
@@ -7,7 +8,7 @@ const useGroups = () => {
   };
 
   return useQuery({
-    queryKey: ["group"],
+    queryKey: GROUP_QUERY_KEY_CACHE,
     queryFn: fetchGroups,
   });
 };

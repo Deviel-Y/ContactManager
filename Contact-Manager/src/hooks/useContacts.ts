@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import Contact from "../Entites/Contact";
 import contactService from "../Services/contactService";
+import { CONTACT_QUERY_KEY_CACHE } from "../constants";
 
 const useContact = () => {
   const fetchContacts = () => {
@@ -8,7 +9,7 @@ const useContact = () => {
   };
 
   return useQuery<Contact[], Error>({
-    queryKey: ["contacts"],
+    queryKey: CONTACT_QUERY_KEY_CACHE,
     queryFn: fetchContacts,
   });
 };
