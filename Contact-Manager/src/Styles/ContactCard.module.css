@@ -3,7 +3,9 @@
 .contactPhoto,
 .contactInfoItem,
 .actionButtons,
-.contactName {
+.contactName,
+.photoSection,
+.infoSection {
   background-color: transparent;
 }
 
@@ -19,7 +21,7 @@
 }
 
 .card:hover {
-  transform: scale(1.02);
+  transform: scale(1.01);
 }
 
 .contactPhoto {
@@ -95,4 +97,28 @@
   color: rgb(86, 86, 85);
   background-color: rgb(209, 200, 66);
   transform: translateY(3px);
+}
+
+@media screen and (max-width: 860px) {
+  .card {
+    display: flex;
+    height: auto;
+    transition: all 0.15s;
+  }
+  .contactPhoto {
+    height: 260px;
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: 716px) {
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contactName {
+    text-align: center;
+  }
 }

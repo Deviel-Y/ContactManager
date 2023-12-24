@@ -1,10 +1,76 @@
-.heading {
-  font-size: 30px;
-  margin: 0;
+/* navBar Section */
+.navBar {
+  padding: 1rem;
+  display: flex;
+  flex-shrink: 2;
+  justify-content: space-around;
+  align-items: center;
 }
 
-/* navbar : Customize bootstrap class */
-.navbar {
-  border-bottom: 1px solid gray;
-  margin-bottom: 25px;
+.contactIcon {
+  font-size: 30px;
+}
+
+/* Search Contact Section */
+.searchContainer {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  border: 3px solid gray;
+  border-radius: 30px;
+  transition: all 0.25s;
+}
+
+.searchContainer:focus-within {
+  box-shadow: 0px 1px 5px 0px var(--border-color);
+  border-color: #dde6ed;
+}
+
+.contactSearch {
+  width: 100%;
+}
+
+.contactSearch::placeholder {
+  font-weight: 400;
+  color: var(--text-color);
+}
+
+.searchContainer .searchButton,
+.searchContainer .contactSearch {
+  border: none;
+  margin: 10px 20px;
+  background-color: white;
+  outline: 0;
+  background-color: var(--background-color);
+}
+
+@media screen and (max-width: 1100px) {
+  .contactIcon {
+    font-size: 25px;
+  }
+
+  .heading {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .contactIcon {
+    font-size: 25px;
+  }
+
+  .heading {
+    font-size: 25px;
+    margin-left: 40px;
+  }
+
+  .searchContainer .searchButton,
+  .searchContainer .contactSearch {
+    border: none;
+    margin: 5px 10px;
+    background-color: white;
+    outline: 0;
+    background-color: var(--background-color);
+  }
 }

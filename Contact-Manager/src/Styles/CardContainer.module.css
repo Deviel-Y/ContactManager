@@ -24,3 +24,32 @@
   justify-items: center;
   height: 100vh;
 }
+
+@media screen and (max-width: 1280px) {
+  .cardContainerSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .cardContainerSection {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .addContact {
+    background-color: #81e6d9;
+    color: black;
+    font-size: 25px;
+    font-weight: 700;
+    transition: all 0.15s;
+    padding: 1rem 2rem;
+  }
+
+  .addContactContainer {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+}

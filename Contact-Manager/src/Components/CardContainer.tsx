@@ -13,14 +13,14 @@ const CardContainer = () => {
   const searchedItem = location.search.slice(8);
 
   const filteredContact = contacts?.filter((contact) =>
-    contact?.fullname.toLowerCase().includes(searchedItem.toLowerCase())
+    contact?.fullname?.toLowerCase().includes(searchedItem.toLowerCase())
   );
 
   return (
     <>
       {isLoading && <div className="spinner-grow" />}
       <div>
-        <div>
+        <div className={styles.addContactContainer}>
           <button
             onClick={() => navigate("contacts/add")}
             className={[styles.btn, styles.addContact].join(" ")}
