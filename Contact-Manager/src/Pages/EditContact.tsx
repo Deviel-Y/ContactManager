@@ -18,7 +18,15 @@ const EditContact = () => {
 
   const editContact = useEditContact();
 
-  const [formState, setFormState] = useState({} as Contact);
+  const [formState, setFormState] = useState<Contact>({
+    id: 0,
+    fullname: "",
+    email: "",
+    photo: "",
+    mobile: 0,
+    job: "",
+    group: "",
+  });
 
   useEffect(() => {
     if (theContact) setFormState(theContact);
@@ -36,13 +44,13 @@ const EditContact = () => {
       if (file) {
         const imageUrl = URL.createObjectURL(file);
         setFormState((prevState) => ({
-          ...prevState,
+          ...(prevState as Contact),
           photo: imageUrl,
         }));
       }
     } else {
       setFormState((prevState) => ({
-        ...prevState,
+        ...(prevState as Contact),
         [name]: value,
       }));
     }
@@ -67,7 +75,7 @@ const EditContact = () => {
         <form className={styles.formInputs} onSubmit={handleSubmit}>
           <h2 className="mb-3">Edit Contact</h2>
           <div className={["mb-3", styles.inputSection].join(" ")}>
-            <label className={styles.formLabel} htmlFor="fullName">
+            <label className="form-label" htmlFor="fullName">
               Full Name
             </label>
             <input
