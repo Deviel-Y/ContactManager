@@ -164,10 +164,16 @@ const EditContact = () => {
             </select>
           </div>
           <div className={["mb-3", styles.inputSection].join(" ")}>
-            <button className="btn btn-primary me-3" type="submit">
+            <button
+              className={["btn", "btn-primary", "px-5", "me-3"].join(" ")}
+              type="submit"
+            >
               Save Changes
             </button>
-            <button onClick={() => navigate("/")} className="btn btn-secondary">
+            <button
+              onClick={() => navigate("/")}
+              className={["btn", "btn-danger"].join(" ")}
+            >
               Cancel
             </button>
           </div>
