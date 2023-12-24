@@ -13,7 +13,7 @@ const useAddContact = () => {
     onSuccess: (savedContacts) => {
       queryClient.setQueryData<Contact[]>(
         CONTACT_QUERY_KEY_CACHE,
-        (contact) => [savedContacts, ...(contact || [])]
+        (contact) => [...(contact || []), savedContacts]
       );
     },
 

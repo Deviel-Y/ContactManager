@@ -1,68 +1,47 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { FieldValues, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import Contact from "../Entites/Contact";
 import styles from "../Styles/AddContact.module.css";
 import useAddContact from "../hooks/useAddContact";
 import useGroups from "../hooks/useGroups";
+import Contact from "../Entites/Contact";
+import { ChangeEvent, useState } from "react";
 
 const AddContact = () => {
   const addContact = useAddContact();
+  const { register, handleSubmit } = useForm<Contact>();
 
-  const [formState, setFormState] = useState({} as Contact);
+  const [photoUrl, setPhotoUrl] = useState<string>();
 
   const { data: groups, isLoading } = useGroups();
 
   const navigate = useNavigate();
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const target = e.target as HTMLInputElement;
-    const { name, value, type } = target;
-
-    if (type === "file") {
-      const file = target.files?.[0];
-
-      if (file) {
-        const imageUrl = URL.createObjectURL(file);
-        setFormState((prevState) => ({
-          ...prevState,
-          photo: imageUrl,
-        }));
-      }
-    } else {
-      setFormState((prevState) => ({
-        ...prevState,
-        [name]: value,
-      }));
-    }
-  };
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const newContact = {
-      ...formState,
-      id: Date.now(),
-    };
-
+  const onSubmit = (data: FieldValues) => {
+    const newContact: Contact = { ...data, id: Date.now() };
+    newContact.photo = photoUrl;
     addContact.mutate(newContact);
 
     navigate("/");
+  };
+
+  const handlePhotoChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    const imageURL = URL.createObjectURL(file!);
+    setPhotoUrl(imageURL);
   };
 
   return (
     <>
       {isLoading && <div className="spinner-grow" />}
       <section className={styles.formContainer}>
-        <form className={styles.formInputs} onSubmit={handleSubmit}>
+        <form className={styles.formInputs} onSubmit={handleSubmit(onSubmit)}>
           <h2 className="mb-3">Add a contact</h2>
           <div className={["mb-3", styles.inputSection].join(" ")}>
             <label className="form-label" htmlFor="fullName">
               Full Name
             </label>
             <input
-              value={formState.fullname}
-              onChange={handleChange}
+              {...register("fullname")}
               name="fullname"
               required
               maxLength={35}
@@ -76,11 +55,10 @@ const AddContact = () => {
               Phone Number
             </label>
             <input
-              value={formState.mobile}
-              onChange={handleChange}
+              {...register("mobile")}
               name="mobile"
               required
-              maxLength={20}
+              maxLength={13}
               type="number"
               id="mobile"
               className="form-control"
@@ -91,8 +69,7 @@ const AddContact = () => {
               Email Address
             </label>
             <input
-              value={formState.email}
-              onChange={handleChange}
+              {...register("email")}
               name="email"
               required
               maxLength={35}
@@ -106,8 +83,7 @@ const AddContact = () => {
               Job
             </label>
             <input
-              value={formState.job}
-              onChange={handleChange}
+              {...register("job")}
               name="job"
               required
               maxLength={35}
@@ -121,7 +97,7 @@ const AddContact = () => {
               Photo
             </label>
             <input
-              onChange={handleChange}
+              onChange={handlePhotoChange}
               name="photo"
               type="file"
               accept="image/*"
@@ -134,7 +110,7 @@ const AddContact = () => {
               Group
             </label>
             <select
-              onChange={handleChange}
+              {...register("group")}
               required
               name="group"
               id="group"
@@ -149,13 +125,10 @@ const AddContact = () => {
             </select>
           </div>
           <div className={["mb-3", styles.inputSection].join(" ")}>
-            <button className="btn btn-primary" type="submit">
+            <button className="btn btn-primary px-5 me-3" type="submit">
               Add Contact
             </button>
-            <button className="btn btn-danger mx-3" type="reset">
-              Reset
-            </button>
-            <button onClick={() => navigate("/")} className="btn btn-secondary">
+            <button onClick={() => navigate("/")} className="btn btn-danger">
               Cancel
             </button>
           </div>
