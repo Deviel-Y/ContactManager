@@ -57,7 +57,7 @@ const AddContact = () => {
         <form className={styles.formInputs} onSubmit={handleSubmit}>
           <h2 className="mb-3">Add a contact</h2>
           <div className={["mb-3", styles.inputSection].join(" ")}>
-            <label className={styles.formLabel} htmlFor="fullName">
+            <label className="form-label" htmlFor="fullName">
               Full Name
             </label>
             <input
@@ -121,7 +121,6 @@ const AddContact = () => {
               Photo
             </label>
             <input
-              value={formState.photo}
               onChange={handleChange}
               name="photo"
               type="file"

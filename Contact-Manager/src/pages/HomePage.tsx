@@ -1,4 +1,4 @@
-import { CardContainer, Navbar } from "..";
+import { CardContainer, Navbar } from "../index";
 
 const HomePage = () => {
   return (
