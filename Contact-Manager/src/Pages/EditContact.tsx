@@ -1,10 +1,11 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import { FieldValues, useForm } from "react-hook-form";
+import { useNavigate, useParams } from "react-router-dom";
 import Contact from "../Entites/Contact";
 import styles from "../Styles/EditContact.module.css";
 import useContact from "../hooks/useContacts";
-import useGroups from "../hooks/useGroups";
-import { useNavigate, useParams } from "react-router-dom";
 import useEditContact from "../hooks/useEditContact";
+import useGroups from "../hooks/useGroups";
 
 const EditContact = () => {
   const { id } = useParams();
@@ -18,53 +19,38 @@ const EditContact = () => {
 
   const editContact = useEditContact();
 
-  const [formState, setFormState] = useState<Contact>({
-    id: 0,
-    fullname: "",
-    email: "",
-    photo: "",
-    mobile: 0,
-    job: "",
-    group: "",
-  });
+  const { register, handleSubmit, setValue } = useForm();
+
+  const [contactPhoto, setContactPhoto] = useState<string>(
+    theContact?.photo || ""
+  );
 
   useEffect(() => {
-    if (theContact) setFormState(theContact);
-  }, [theContact]);
-
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const target = e.target as HTMLInputElement;
-    const { name, value, type } = target;
-
-    if (type === "file") {
-      const file = target.files?.[0];
-
-      if (file) {
-        const imageUrl = URL.createObjectURL(file);
-        setFormState((prevState) => ({
-          ...(prevState as Contact),
-          photo: imageUrl,
-        }));
-      }
-    } else {
-      setFormState((prevState) => ({
-        ...(prevState as Contact),
-        [name]: value,
-      }));
+    if (theContact) {
+      setValue("fullname", theContact.fullname);
+      setValue("email", theContact.email);
+      setValue("mobile", theContact.mobile);
+      setValue("job", theContact.job);
+      setValue("group", theContact.group);
+      setContactPhoto(theContact.photo || "");
     }
+  }, [theContact, setValue]);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    const imageUrl = URL.createObjectURL(file!);
+    setContactPhoto(imageUrl);
+    setValue(e.target.name, e.target.value);
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const newContact = {
-      ...formState,
-      id: Date.now(),
+  const onSubmit = (data: FieldValues) => {
+    const editedContact: Contact = {
+      ...data,
+      id: contactId,
+      photo: contactPhoto,
     };
 
-    editContact.mutate(newContact);
+    editContact.mutate(editedContact);
   };
 
   return (
@@ -72,15 +58,14 @@ const EditContact = () => {
       {isLoading && <div className="spinner-grow" />}
 
       <section className={styles.formContainer}>
-        <form className={styles.formInputs} onSubmit={handleSubmit}>
+        <form className={styles.formInputs} onSubmit={handleSubmit(onSubmit)}>
           <h2 className="mb-3">Edit Contact</h2>
           <div className={["mb-3", styles.inputSection].join(" ")}>
             <label className="form-label" htmlFor="fullName">
               Full Name
             </label>
             <input
-              value={formState?.fullname}
-              onChange={handleChange}
+              {...register("fullname")}
               name="fullname"
               maxLength={35}
               type="text"
@@ -93,8 +78,7 @@ const EditContact = () => {
               Phone Number
             </label>
             <input
-              value={formState?.mobile}
-              onChange={handleChange}
+              {...register("mobile")}
               name="mobile"
               maxLength={20}
               type="number"
@@ -107,8 +91,7 @@ const EditContact = () => {
               Email Address
             </label>
             <input
-              value={formState?.email}
-              onChange={handleChange}
+              {...register("email")}
               name="email"
               maxLength={35}
               type="email"
@@ -121,8 +104,7 @@ const EditContact = () => {
               Job
             </label>
             <input
-              value={formState?.job}
-              onChange={handleChange}
+              {...register("job")}
               name="job"
               maxLength={35}
               type="text"
@@ -149,8 +131,7 @@ const EditContact = () => {
               Group
             </label>
             <select
-              value={formState?.group}
-              onChange={handleChange}
+              {...register("group")}
               name="group"
               id="group"
               className="form-select"
